@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="FitLife 360 — your complete health & fitness companion. Workouts, nutrition, GPS running, diet plans. Your data stays on your device.">
+  <meta name="theme-color" content="#0f1113">
+  <title>FitLife 360 — Health & Fitness</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <nav class="desktop-nav" id="desktopNav" aria-label="Main navigation">
+    <button data-view="home">🏠 Home</button>
+    <button data-view="workout">💪 Workout</button>
+    <button data-view="nutrition">🍎 Nutrition</button>
+    <button data-view="run">🏃 Run</button>
+    <button data-view="profile">👤 Profile</button>
+  </nav>
+
+  <div id="app"><main id="view"></main></div>
+
+  <noscript>
+    <div style="padding:40px;text-align:center;font-family:sans-serif">
+      <h2>FitLife 360 needs JavaScript</h2>
+      <p>Please enable JavaScript to use this app.</p>
+    </div>
+  </noscript>
+
+  <!-- Load order matters: storage → data → charts → app → features -->
+  <script src="js/storage.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/workouts.js"></script>
+  <script src="js/nutrition.js"></script>
+  <script src="js/run.js"></script>
+  <script src="js/diet.js"></script>
+  <script>
+    // Desktop nav mirrors the mobile bottom nav (active state is synced by App.render)
+    document.querySelectorAll('#desktopNav button').forEach(function (b) {
+      b.addEventListener('click', function () { App.go(b.dataset.view); });
+    });
+  </script>
+</body>
+</html>

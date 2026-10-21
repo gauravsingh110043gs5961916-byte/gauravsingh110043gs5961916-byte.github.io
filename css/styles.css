@@ -1,0 +1,313 @@
+/* ============================================================
+   FitLife 360 — styles.css
+   Mobile-first, dark/light themes.
+   Palette: black / charcoal / white + subtle green accent.
+   ============================================================ */
+
+:root, [data-theme="dark"] {
+  --bg: #0f1113;
+  --bg2: #16191d;
+  --card: #1c2026;
+  --card2: #242a32;
+  --text: #eef1f4;
+  --muted: #9aa3ad;
+  --border: #2c333c;
+  --green: #34c759;
+  --green-dim: rgba(52, 199, 89, 0.14);
+  --blue: #3b82f6;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --purple: #8b5cf6;
+  --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  --radius: 16px;
+}
+
+[data-theme="light"] {
+  --bg: #f4f6f8;
+  --bg2: #ffffff;
+  --card: #ffffff;
+  --card2: #f0f3f6;
+  --text: #16191d;
+  --muted: #5f6b76;
+  --border: #e2e7ec;
+  --green-dim: rgba(52, 199, 89, 0.12);
+  --shadow: 0 4px 16px rgba(20, 30, 40, 0.08);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding-bottom: 84px; /* room for bottom nav */
+}
+
+#view { max-width: 640px; margin: 0 auto; padding: 14px 14px 20px; }
+
+/* ---------- header ---------- */
+.app-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 4px 0 14px;
+}
+.app-head h2 { margin: 0; font-size: 1.35rem; }
+
+.icon-btn {
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 12px; width: 40px; height: 40px; font-size: 1.1rem; cursor: pointer;
+}
+.icon-btn.danger { color: var(--red); }
+.icon-btn:disabled { opacity: 0.4; }
+
+/* ---------- cards & layout ---------- */
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px; margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.card.small { padding: 10px 12px; }
+.card.center { text-align: center; }
+.card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.card h4 { margin: 12px 0 6px; }
+
+.sec-title { margin: 18px 4px 8px; font-size: 1rem; }
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+.fine { font-size: 0.75rem; color: var(--muted); }
+.hint { font-size: 0.8rem; color: var(--muted); }
+.ok { color: var(--green); }
+.warn { color: var(--orange); }
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.center { text-align: center; }
+.hidden { display: none !important; }
+
+/* ---------- forms ---------- */
+.field { display: block; margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; }
+.field input, .field select, .field textarea,
+input[type="text"], input[type="number"], input[type="time"],
+input[type="search"], input[type="password"], select, textarea {
+  width: 100%; margin-top: 4px; padding: 11px 12px;
+  background: var(--bg2); border: 1px solid var(--border); color: var(--text);
+  border-radius: 12px; font-size: 1rem; font-family: inherit;
+}
+.field input:focus, .field select:focus, textarea:focus {
+  outline: 2px solid var(--green); border-color: var(--green);
+}
+.inline-select { width: auto; margin: 0; }
+.check { display: flex; gap: 8px; align-items: center; margin: 8px 0; font-size: 0.9rem; }
+.check input { width: 20px; height: 20px; accent-color: var(--green); }
+
+/* ---------- buttons ---------- */
+.btn {
+  border: none; border-radius: 12px; padding: 11px 16px;
+  font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.btn.primary { background: var(--green); color: #06270f; }
+.btn.ghost { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
+.btn.danger { background: rgba(239, 68, 68, 0.14); color: var(--red); border: 1px solid var(--red); }
+.btn.small { padding: 7px 12px; font-size: 0.82rem; }
+.btn.big { padding: 16px; font-size: 1.1rem; width: 100%; }
+.btn.full { width: 100%; margin-top: 8px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  border-radius: 999px; padding: 8px 14px; font-size: 0.85rem; cursor: pointer; font-family: inherit;
+}
+.chip.on { background: var(--green-dim); border-color: var(--green); color: var(--green); font-weight: 700; }
+
+.tag { background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 2px 8px; font-size: 0.75rem; margin-right: 4px; }
+.tag.high { border-color: var(--green); color: var(--green); }
+.tag.medium { border-color: var(--orange); color: var(--orange); }
+.tag.low { border-color: var(--red); color: var(--red); }
+.tag-row { margin-top: 8px; }
+
+/* ---------- bottom nav ---------- */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+  display: flex; background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 6px 4px calc(8px + env(safe-area-inset-bottom));
+}
+.bottom-nav button {
+  flex: 1; background: none; border: none; color: var(--muted);
+  font-size: 1.3rem; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 0; cursor: pointer; font-family: inherit;
+}
+.bottom-nav button span { font-size: 0.68rem; font-weight: 600; }
+.bottom-nav button.active { color: var(--green); }
+
+/* ---------- home ---------- */
+.rings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.ring-card { text-align: center; padding: 10px 6px; margin: 0; }
+.ring-card canvas { max-width: 110px; }
+.ring-card p { margin: 4px 0 0; font-weight: 700; font-size: 0.85rem; }
+
+.quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.qbtn {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px 6px; font-size: 1.4rem; cursor: pointer; color: var(--text);
+  display: flex; flex-direction: column; gap: 4px; align-items: center; font-family: inherit;
+}
+.qbtn span { font-size: 0.72rem; font-weight: 600; }
+.qbtn:active { transform: scale(0.96); }
+
+.today-strip { display: flex; justify-content: space-between; align-items: center; }
+.today-strip p { margin: 4px 0 0; }
+
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.menu-item {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 6px; font-size: 1.5rem; cursor: pointer; color: var(--text);
+  display: flex; flex-direction: column; gap: 4px; align-items: center; font-family: inherit;
+}
+.menu-item span { font-size: 0.75rem; font-weight: 600; }
+
+.menu-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.menu-row {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 13px 14px; display: flex; justify-content: space-between; align-items: center;
+  color: var(--text); font-size: 0.95rem; cursor: pointer; font-family: inherit; text-align: left;
+}
+
+.app-foot { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 22px 0 8px; }
+
+/* ---------- onboarding ---------- */
+.onboard { max-width: 480px; margin: 30px auto; }
+.onboard h2 { margin-bottom: 2px; }
+.ob-progress { display: flex; gap: 6px; margin-bottom: 16px; }
+.ob-progress span { flex: 1; height: 6px; border-radius: 3px; background: var(--border); }
+.ob-progress span.on { background: var(--green); }
+.ob-nav { display: flex; justify-content: space-between; margin-top: 14px; }
+
+/* ---------- modal / toast ---------- */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 100;
+  display: flex; align-items: flex-end; justify-content: center; padding: 0;
+}
+.modal {
+  background: var(--bg2); border-radius: 20px 20px 0 0; width: 100%; max-width: 640px;
+  max-height: 88vh; overflow-y: auto; padding: 18px; border-top: 1px solid var(--border);
+}
+.modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.modal-head h3 { margin: 0; }
+.modal-actions { display: flex; gap: 8px; margin-top: 14px; }
+.modal-actions .btn { flex: 1; }
+
+#toast {
+  position: fixed; bottom: 96px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--text); color: var(--bg); padding: 11px 18px; border-radius: 999px;
+  font-size: 0.9rem; font-weight: 600; opacity: 0; transition: all 0.25s; z-index: 200;
+  pointer-events: none; max-width: 90vw; text-align: center;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- lists ---------- */
+.list-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 10px 4px; border-bottom: 1px solid var(--border); font-size: 0.92rem;
+}
+.list-item:last-child { border-bottom: none; }
+
+.results { margin-top: 8px; max-height: 260px; overflow-y: auto; }
+.result-row {
+  display: block; width: 100%; text-align: left; background: var(--card2);
+  border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px;
+  color: var(--text); cursor: pointer; font-family: inherit; font-size: 0.9rem;
+}
+.result-row small { display: block; }
+
+.date-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+
+.macro-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 6px; }
+.macro { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 8px 6px; text-align: center; font-size: 0.85rem; font-weight: 700; }
+.macro small { display: block; font-weight: 400; color: var(--muted); font-size: 0.7rem; }
+.pbar { height: 8px; background: var(--border); border-radius: 4px; margin-top: 10px; overflow: hidden; }
+.pbar.big { height: 14px; }
+.pbar > div { height: 100%; background: var(--green); border-radius: 4px; transition: width 0.4s; }
+
+.meal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.nutri-line { background: var(--green-dim); border-radius: 10px; padding: 8px 10px; margin: 8px 0; font-size: 0.9rem; }
+
+.scan-img { width: 100%; border-radius: 12px; margin-top: 10px; max-height: 280px; object-fit: cover; }
+
+/* ---------- workout session ---------- */
+.session-overlay {
+  position: fixed; inset: 0; z-index: 90; background: var(--bg);
+  overflow-y: auto; padding: 14px 14px 40px;
+}
+.session { max-width: 640px; margin: 0 auto; }
+.session-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.session-head h3 { margin: 0; }
+#sessClock { font-size: 1.6rem; font-weight: 800; color: var(--green); margin: 2px 0 0; }
+.sets { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+.set-done { background: var(--green-dim); color: var(--green); border-radius: 8px; padding: 3px 9px; font-size: 0.8rem; font-weight: 700; }
+.rest-banner { background: var(--orange); color: #231300; border-radius: 12px; padding: 10px 14px;
+  margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
+.session-foot { display: flex; gap: 10px; margin-top: 14px; }
+.session-foot .btn { flex: 1; }
+.ex-card { cursor: pointer; }
+.ex-card.picked { border-color: var(--green); background: var(--green-dim); }
+.pick-bar { position: sticky; top: 0; z-index: 5; background: var(--bg2); border: 1px solid var(--green);
+  border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.plan-day { border-top: 1px solid var(--border); padding: 10px 0; }
+.plan-day:first-of-type { border-top: none; }
+
+/* ---------- run ---------- */
+.map { height: 220px; border-radius: 12px; background: var(--card2); border: 1px solid var(--border); z-index: 1; }
+.run-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; }
+.big-stat span { display: block; font-size: 1.15rem; font-weight: 800; color: var(--green); }
+.big-stat small { color: var(--muted); font-size: 0.7rem; }
+.run-controls { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.row-btns { display: flex; gap: 8px; margin-top: 6px; }
+.sum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.sum-grid div { background: var(--card2); border-radius: 10px; padding: 10px; text-align: center; }
+.sum-grid strong { display: block; font-size: 1.2rem; color: var(--green); }
+.sum-grid small { color: var(--muted); }
+
+/* ---------- profile ---------- */
+.target-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin: 8px 0; }
+.target-grid strong { display: block; font-size: 1.15rem; color: var(--green); }
+.target-grid small { color: var(--muted); font-size: 0.72rem; }
+
+.grocery { max-height: 300px; overflow-y: auto; font-size: 0.92rem; line-height: 1.9; }
+
+/* ---------- desktop ---------- */
+@media (min-width: 700px) {
+  body { padding-bottom: 0; }
+  .bottom-nav { display: none; }
+  #view { padding-top: 24px; }
+  .modal-overlay { align-items: center; padding: 20px; }
+  .modal { border-radius: 20px; }
+  /* desktop top nav injected by JS? keep simple: show a floating nav */
+}
+
+/* desktop nav bar */
+@media (min-width: 700px) {
+  .desktop-nav {
+    display: flex !important; gap: 4px; justify-content: center;
+    position: sticky; top: 0; z-index: 50; background: var(--bg2);
+    border-bottom: 1px solid var(--border); padding: 8px;
+  }
+}
+.desktop-nav { display: none; }
+.desktop-nav button {
+  background: none; border: none; color: var(--muted); font-size: 0.9rem; font-weight: 700;
+  padding: 10px 18px; border-radius: 10px; cursor: pointer; font-family: inherit;
+}
+.desktop-nav button.active { color: var(--green); background: var(--green-dim); }
+
+/* accessibility */
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+  outline: 2px solid var(--green); outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* hidden nav state (e.g. during onboarding) */
+.bottom-nav.hidden-nav, .desktop-nav.hidden-nav { display: none !important; }
