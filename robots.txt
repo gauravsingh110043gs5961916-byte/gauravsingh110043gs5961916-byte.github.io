@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gauravsingh110043gs5961916-byte.github.io/sitemap.xml
